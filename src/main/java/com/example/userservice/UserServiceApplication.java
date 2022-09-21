@@ -14,7 +14,7 @@ public class UserServiceApplication {
         SpringApplication.run(UserServiceApplication.class, args);
     }
 
-    @Bean
+    @Bean   // 사용자가 입력한 패스워드를 encrypted password로 변환해준다.
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
