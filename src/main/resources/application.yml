@@ -38,7 +38,7 @@ greeting:
 
 logging:
   level:
-    com.example.userservice: DEBUG
+    com.example.userservice.client: DEBUG
 
 # actuator 정보 출력
 management:
