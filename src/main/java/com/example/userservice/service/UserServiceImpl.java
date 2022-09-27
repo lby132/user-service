@@ -108,9 +108,9 @@ public class UserServiceImpl implements UserService {
 
         /* ErrorDecoder */
         //List<ResponseOrder> orderList = orderServiceClient.getOrders(userId);
-        CircuitBreaker circuitbreaker = circuitBreakerFactory.create("circuitbreaker");
+        CircuitBreaker circuitbreaker = circuitBreakerFactory.create("circuitbreaker"); //circuitbreaker 생성.
         List<ResponseOrder> orderList = circuitbreaker.run(() -> orderServiceClient.getOrders(userId),
-                throwable -> new ArrayList<>());
+                throwable -> new ArrayList<>()); // circuitbreaker를 실행시켰을때 getOrders가 에러가 발생하면 빈값을 넣는다.
 
         userDto.setOrders(orderList);
 
