@@ -108,10 +108,11 @@ public class UserServiceImpl implements UserService {
 
         /* ErrorDecoder */
         //List<ResponseOrder> orderList = orderServiceClient.getOrders(userId);
+        log.info("Before call orders microservice");
         CircuitBreaker circuitbreaker = circuitBreakerFactory.create("circuitbreaker"); //circuitbreaker 생성.
         List<ResponseOrder> orderList = circuitbreaker.run(() -> orderServiceClient.getOrders(userId),
                 throwable -> new ArrayList<>()); // circuitbreaker를 실행시켰을때 getOrders가 에러가 발생하면 빈값을 넣는다.
-
+        log.info("After called orders microservice");
         userDto.setOrders(orderList);
 
         return userDto;

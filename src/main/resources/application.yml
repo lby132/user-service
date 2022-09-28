@@ -4,6 +4,15 @@ server:
 spring:
   application:
     name: user-service
+    # zipkin서버 설정
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    enabled: true
+    # 에러가 발생하면 zipkin서버에 전달한다.
+  sleuth:
+    sampler:
+      probability: 1.0  # 에러 어디까지 보여주는지 퍼센테이지로 정하는데 1.0이면 100퍼센트 다 보여준다는 것.
+
   rabbitmq:
     host: 127.0.0.1
     port: 5672
