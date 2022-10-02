@@ -41,7 +41,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/error/**").permitAll()     //에러 요청을 처리해야해서 에러에 대한 부분만 통과
                 .antMatchers("/**")         // 모든 작업에 통과시키지 않는다.
-                .access("hasIpAddress('"+"192.168.35.120"+"')")  // 사용자는 무조건 아이피를 제한적으로 받는다.
+                .access("hasIpAddress('"+"172.18.0.4"+"')")  // 사용자는 무조건 아이피를 제한적으로 받는다.
                 .and()
                 .addFilter(getAuthenticationFilter());  // 여기에 통과된 데이터만 권한을 부여하고 작업을 진행을 한다.
 
